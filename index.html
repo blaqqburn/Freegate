@@ -4,180 +4,223 @@
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <title>Freegate Culture</title>
+ <meta name="google-site-verification" content="Vwre_8EZeTJ557Q03PoYOYA-Z5TyCYv5WnX6S9eCDzc" />
  <style>
- body {
- font-family: Arial, sans-serif;
- margin: 0;
- padding: 0;
- background: linear-gradient(to bottom, #fefcbf, #88b04b);
- color: #333;
- }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #fefcbf, #88b04b);
+    color: #333;
+  }
 
- header {
- background: linear-gradient(to right, #e91e63, #f5d442, #4caf50);
- color: white;
- padding: 20px;
- text-align: center;
- }
+  header {
+    background: linear-gradient(to right, #e91e63, #f5d442, #4caf50);
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
 
- header h1 {
- margin: 0;
- font-size: 2.5em;
- }
+  header h1 {
+    margin: 0;
+    font-size: 2.5em;
+  }
 
- header p {
- font-style: italic;
- margin-top: 5px;
- }
+  header p {
+    font-style: italic;
+    margin-top: 5px;
+  }
 
- .section {
- padding: 40px 20px;
- max-width: 1000px;
- margin: 0 auto;
- }
+  .section {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
 
- .section h2 {
- font-size: 1.8em;
- margin-bottom: 10px;
- color: #222;
- }
+  .section h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #222;
+  }
 
- .product-gallery {
- display: flex;
- flex-wrap: wrap;
- gap: 15px;
- justify-content: center;
- }
+  .product-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
 
- .product-gallery img {
- width: 200px;
- border-radius: 10px;
- border: 3px solid #f5d442;
- transition: transform 0.3s ease;
- }
+  .product-gallery img {
+    width: 200px;
+    border-radius: 10px;
+    border: 3px solid #f5d442;
+    transition: transform 0.3s ease;
+  }
 
- .product-gallery img:hover {
- transform: scale(1.05);
- }
+  .product-gallery img:hover {
+    transform: scale(1.05);
+  }
 
- .contact {
- background-color: #333;
- color: #fff;
- padding: 30px 20px;
- text-align: center;
- }
+  .contact {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+  }
 
- .contact h3 {
- margin-bottom: 10px;
- color: #f5d442;
- }
+  .contact h3 {
+    margin-bottom: 10px;
+    color: #f5d442;
+  }
 
- .contact p {
- font-size: 1em;
- }
+  .footer {
+    background-color: #222;
+    color: #aaa;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9em;
+  }
 
- .footer {
- background-color: #222;
- color: #aaa;
- padding: 10px;
- text-align: center;
- font-size: 0.9em;
- }
+  a {
+    color: #f5d442;
+    text-decoration: none;
+  }
 
- a {
- color: #f5d442;
- text-decoration: none;
- }
+  a:hover {
+    text-decoration: underline;
+  }
 
- a:hover {
- text-decoration: underline;
- }
+  button {
+    background-color: #f5d442;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  button:hover {
+    background-color: #e0c63f;
+  }
  </style>
 </head>
 <body>
 
- <header>
+<header>
  <h1>FREEGATE Culture</h1>
  <p>Embrace The Beat. Live The Vibe.</p>
- </header>
+</header>
 
- <div class="section" id="pullovers">
+<div class="section" id="pullovers">
  <h2>Rasta Hoodies / Pullovers</h2>
  <div class="product-gallery">
- <img src="images/pullovers_yellow_red_green_black.png" alt="Pullover Mix">
- <img src="images/pullover_yellow_front.png" alt="Pullover Yellow">
- <img src="images/pullover_green_front.png" alt="Pullover Green">
- <img src="images/pullover_black_green_red_front.png" alt="Pullover Black">
+   <img src="images/pullovers_yellow_red_green_black.png" alt="Pullover Mix">
+   <img src="images/pullover_yellow_front.png" alt="Pullover Yellow">
+   <img src="images/pullover_green_front.png" alt="Pullover Green">
+   <img src="images/pullover_black_green_red_front.png" alt="Pullover Black">
  </div>
  <p><strong>Price:</strong> €54.99 — Customized: €70.99</p>
- </div>
+ <button onclick="addToCart('Rasta Pullover', 54.99)">Add to Cart</button>
+</div>
 
- <div class="section" id="tshirts">
+<div class="section" id="tshirts">
  <h2>Freegate T-Shirts</h2>
  <div class="product-gallery">
- <img src="images/tees.png" alt="Freegate T-Shirts">
+   <img src="images/tees.png" alt="Freegate T-Shirts">
  </div>
  <p><strong>Price:</strong> €29.99</p>
- </div>
+ <button onclick="addToCart('Freegate T-Shirt', 29.99)">Add to Cart</button>
+</div>
 
- <div class="section" id="freedomTees">
+<div class="section" id="freedomTees">
  <h2>Special Edition: “Freedom Over Fear” Tees</h2>
  <div class="product-gallery">
- <img src="images/freedom_over_fear_trio.png" alt="Freedom Over Fear Trio Shirts">
+   <img src="images/freedom_over_fear_trio.png" alt="Freedom Over Fear Trio Shirts">
  </div>
  <p><strong>Price:</strong> €32.99</p>
- <p><strong>Details:</strong> Bold, conscious, and cultural — this trio embodies the spirit of liberation, rootedness, and fearlessness. Limited run and made for the conscious kings and queens. </p>
- <p><strong>Slogan:</strong> “Freedom Over Fear”</p>
- </div>
+ <button onclick="addToCart('Freedom Over Fear Tee', 32.99)">Add to Cart</button>
+</div>
 
- <div class="section" id="freegatevibesTees">
- <h2>“Freegatevibes”Tees</h2>
+<div class="section" id="freegatevibesTees">
+ <h2>“Freegatevibes” Tees</h2>
  <div class="product-gallery">
- <img src="images/freegatevibes.png" alt="Freegatevibes shirts">
+   <img src="images/freegatevibes.png" alt="Freegatevibes shirts">
  </div>
  <p><strong>Price:</strong> €32.99</p>
- </div>
+ <button onclick="addToCart('Freegatevibes Tee', 32.99)">Add to Cart</button>
+</div>
 
 <div class="section" id="freedom-black">
  <h2>“Freedom Over Fear” Tee – Black Edition</h2>
  <div class="product-gallery">
- <img src="images/freedom_black_tee.png" alt="Freedom Over Fear Black Tee">
+   <img src="images/freedom_black_tee.png" alt="Freedom Over Fear Black Tee">
  </div>
  <p><strong>Price:</strong> €34.99</p>
- <p><strong>Style:</strong> Bold black tee featuring the powerful “Freedom Over Fear” slogan. Shot against a natural wood backdrop to represent grounded strength and cultural depth.</p>
- <p><strong>Fit:</strong> Unisex / Regular Fit — Available in sizes S to XL</p>
- <p><strong>Color:</strong> Black with Yellow-Gold & Red Print</p>
+ <p><strong>Fit:</strong> Unisex / Regular Fit — Sizes S to XL</p>
+ <button onclick="addToCart('Freedom Black Edition Tee', 34.99)">Add to Cart</button>
 </div>
 
- <div class="section" id="headgears">
+<div class="section" id="headgears">
  <h2>Rasta Headgear – Unisex Dread Caps</h2>
  <div class="product-gallery">
- <img src="images/headgear.png" alt="Headgear 1">
- <img src="images/headgears.png" alt="Headgear Collection">
+   <img src="images/headgear.png" alt="Headgear 1">
+   <img src="images/headgears.png" alt="Headgear Collection">
  </div>
  <p><strong>Price:</strong> €19.99</p>
- </div>
+ <button onclick="addToCart('Rasta Headgear', 19.99)">Add to Cart</button>
+</div>
 
- <div class="section" id="sweatpants">
+<div class="section" id="sweatpants">
  <h2>Rasta-Inspired Sweatpants</h2>
  <div class="product-gallery">
- <img src="images/sweatpants1.png" alt="Sweatpants 1">
- <img src="images/sweatpants2.png" alt="Sweatpants 2">
- <img src="images/sweatpants3.png" alt="Sweatpants 3">
+   <img src="images/sweatpants1.png" alt="Sweatpants 1">
+   <img src="images/sweatpants2.png" alt="Sweatpants 2">
+   <img src="images/sweatpants3.png" alt="Sweatpants 3">
  </div>
  <p><strong>Price:</strong> €42.50 — Customized: €49.99</p>
- </div>
+ <button onclick="addToCart('Rasta Sweatpants', 42.50)">Add to Cart</button>
+</div>
 
- <div class="contact" id="contact">
+<div class="section" id="cart" style="background:#fdf3d0; padding: 20px; border-top: 2px solid #ccc;">
+ <h3>🛒 Cart</h3>
+ <ul id="cart-items"></ul>
+ <p><strong>Total: €<span id="cart-total">0.00</span></strong></p>
+</div>
+
+<div class="contact" id="contact">
  <h3>Pre-Order / Contact</h3>
  <p> WhatsApp: <a href="https://wa.me/4915731268128" target="_blank">+49 157 31268128</a></p>
  <p> Pay via Revolut: <strong>@burnakwan</strong></p>
  <p> Email: <strong>freegateconnect@gmail.com</strong></p>
- </div>
+</div>
 
- <div class="footer">
+<div class="footer">
  <p>&copy; 2025 Freegate Culture. All rights reserved.</p>
- </div>
+</div>
+
+<script>
+  let cart = [];
+
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    updateCart();
+  }
+
+  function updateCart() {
+    const cartList = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+    cartList.innerHTML = "";
+    let total = 0;
+    cart.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.name} - €${item.price.toFixed(2)}`;
+      cartList.appendChild(li);
+      total += item.price;
+    });
+    cartTotal.textContent = total.toFixed(2);
+  }
+</script>
 
 </body>
 </html>

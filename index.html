@@ -1,243 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Freegate Culture</title>
- <meta name="google-site-verification" content="Vwre_8EZeTJ557Q03PoYOYA-Z5TyCYv5WnX6S9eCDzc" />
- <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom, #fefcbf, #88b04b);
-    color: #333;
-    animation: fadeIn 1s ease-in;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  header {
-    background: linear-gradient(to right, #e91e63, #f5d442, #4caf50);
-    color: white;
-    padding: 20px;
-    text-align: center;
-  }
-
-  header img {
-    width: 80px;
-    height: auto;
-    margin-bottom: 10px;
-  }
-
-  header h1 {
-    margin: 0;
-    font-size: 2.5em;
-  }
-
-  header p {
-    font-style: italic;
-    margin-top: 5px;
-  }
-
-  .section {
-    padding: 40px 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .section h2 {
-    font-size: 1.8em;
-    margin-bottom: 10px;
-    color: #222;
-  }
-
-  .product-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-  }
-
-  .product-gallery img {
-    width: 200px;
-    border-radius: 10px;
-    border: 3px solid #f5d442;
-    transition: transform 0.3s ease;
-  }
-
-  .product-gallery img:hover {
-    transform: scale(1.05);
-  }
-
-  .contact {
-    background-color: #333;
-    color: #fff;
-    padding: 30px 20px;
-    text-align: center;
-  }
-
-  .contact h3 {
-    margin-bottom: 10px;
-    color: #f5d442;
-  }
-
-  .contact p {
-    font-size: 1em;
-  }
-
-  .footer {
-    background-color: #222;
-    color: #aaa;
-    padding: 10px;
-    text-align: center;
-    font-size: 0.9em;
-  }
-
-  a {
-    color: #f5d442;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  .etsy-button {
-    text-align: center;
-    padding: 30px;
-  }
-
-  .etsy-button a {
-    display: inline-block;
-    background-color: #e91e63;
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-
-  .etsy-button a:hover {
-    background-color: #d81b60;
-  }
- </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FREEGATEWEAR — expressive streetwear rooted in freedom, culture and bold design.">
+  <meta name="theme-color" content="#0b0b0b">
+  <meta name="google-site-verification" content="Vwre_8EZeTJ557Q03PoYOYA-Z5TyCYv5WnX6S9eCDzc">
+  <title>FREEGATEWEAR | Freedom in Every Thread</title>
+  <style>
+    :root { --ink:#0b0b0b; --paper:#f7f2e7; --gold:#f2c230; --green:#176f42; --red:#c9372c; --card:#151515; --line:rgba(255,255,255,.12); --radius:22px; --shadow:0 24px 60px rgba(0,0,0,.28); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--ink); color:#fff; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.5; }
+    img { display:block; max-width:100%; }
+    a { color:inherit; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    .skip-link { position:fixed; left:16px; top:-80px; z-index:100; padding:10px 16px; background:var(--gold); color:var(--ink); border-radius:999px; font-weight:800; transition:top .2s ease; }
+    .skip-link:focus { top:16px; }
+    .site-header { position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; gap:24px; width:min(1180px,calc(100% - 32px)); margin:0 auto; padding:18px 0; background:rgba(11,11,11,.88); backdrop-filter:blur(16px); }
+    .brand { display:inline-flex; align-items:center; gap:10px; text-decoration:none; font-size:1rem; font-weight:950; letter-spacing:.09em; }
+    .brand-mark { display:grid; place-items:center; width:38px; height:38px; border:2px solid var(--gold); border-radius:50%; color:var(--gold); font-size:.84rem; }
+    nav { display:flex; align-items:center; gap:24px; }
+    nav a { color:#d8d6d0; text-decoration:none; font-size:.9rem; font-weight:700; }
+    nav a:hover,nav a:focus-visible { color:var(--gold); }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:12px 20px; border:1px solid transparent; border-radius:999px; background:var(--gold); color:var(--ink); font-weight:900; text-decoration:none; transition:transform .2s ease,background .2s ease; }
+    .button:hover,.button:focus-visible { transform:translateY(-2px); background:#ffd64b; }
+    .button.secondary { border-color:rgba(255,255,255,.28); background:transparent; color:#fff; }
+    .hero { position:relative; isolation:isolate; min-height:720px; display:grid; align-items:end; overflow:hidden; }
+    .hero::before { content:""; position:absolute; inset:0; z-index:-2; background:url("images/pullovers_black_green_red.png") center 28%/cover no-repeat; }
+    .hero::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,rgba(0,0,0,.96) 0%,rgba(0,0,0,.76) 42%,rgba(0,0,0,.2) 75%),linear-gradient(0deg,#0b0b0b 0%,transparent 38%); }
+    .hero-content { width:min(1180px,calc(100% - 32px)); margin:0 auto; padding:120px 0 100px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; margin:0 0 20px; color:var(--gold); font-size:.78rem; font-weight:900; letter-spacing:.18em; text-transform:uppercase; }
+    .eyebrow::before { content:""; width:34px; height:3px; background:linear-gradient(90deg,var(--green),var(--gold),var(--red)); }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { max-width:760px; margin-bottom:24px; font-size:clamp(3.4rem,9vw,7.7rem); line-height:.88; letter-spacing:-.065em; text-transform:uppercase; }
+    .hero-copy { max-width:620px; color:#d7d3c9; font-size:clamp(1rem,2vw,1.25rem); }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:34px; }
+    .stripe { height:8px; background:linear-gradient(90deg,var(--green) 0 33.33%,var(--gold) 33.33% 66.66%,var(--red) 66.66%); }
+    .section { width:min(1180px,calc(100% - 32px)); margin:0 auto; padding:96px 0; }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap:32px; margin-bottom:36px; }
+    .section-head h2 { max-width:660px; margin-bottom:0; font-size:clamp(2.2rem,5vw,4.8rem); line-height:.98; letter-spacing:-.045em; text-transform:uppercase; }
+    .section-head p { max-width:390px; margin-bottom:4px; color:#aaa69c; }
+    .filters { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:26px; }
+    .filter { min-height:42px; padding:9px 16px; border:1px solid var(--line); border-radius:999px; background:transparent; color:#c7c4bc; font:inherit; font-size:.86rem; font-weight:800; cursor:pointer; }
+    .filter:hover,.filter:focus-visible,.filter.active { border-color:var(--gold); background:var(--gold); color:var(--ink); }
+    .product-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:18px; }
+    .product-card { grid-column:span 4; overflow:hidden; border:1px solid var(--line); border-radius:var(--radius); background:var(--card); box-shadow:var(--shadow); transition:transform .25s ease,border-color .25s ease; }
+    .product-card:hover { transform:translateY(-5px); border-color:rgba(242,194,48,.55); }
+    .product-card[hidden] { display:none; }
+    .product-card figure { aspect-ratio:4/3; margin:0; overflow:hidden; background:#e7e0d2; }
+    .product-card img { width:100%; height:100%; object-fit:cover; transition:transform .45s ease; }
+    .product-card:hover img { transform:scale(1.035); }
+    .product-info { padding:22px; }
+    .product-label { margin-bottom:8px; color:var(--gold); font-size:.72rem; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+    .product-card h3 { margin-bottom:8px; font-size:1.32rem; }
+    .product-card p { margin-bottom:0; color:#aaa69c; font-size:.94rem; }
+    .status { display:inline-flex; margin-top:18px; padding:7px 11px; border:1px solid rgba(242,194,48,.35); border-radius:999px; color:#e9d894; font-size:.76rem; font-weight:800; }
+    .manifesto-wrap { background:var(--paper); color:var(--ink); }
+    .manifesto { display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(40px,8vw,110px); align-items:center; }
+    .manifesto-art { position:relative; min-height:580px; overflow:hidden; border-radius:var(--radius); background:url("images/freedom_black_tee.png") center/cover no-repeat; box-shadow:0 30px 70px rgba(0,0,0,.2); }
+    .manifesto-art::after { content:"Culture cannot be caged."; position:absolute; inset:auto 20px 20px; padding:18px; border-radius:14px; background:rgba(0,0,0,.75); color:#fff; font-size:clamp(1.25rem,3vw,2rem); font-weight:950; text-transform:uppercase; backdrop-filter:blur(10px); }
+    .manifesto h2 { margin-bottom:24px; font-size:clamp(2.7rem,6vw,5.8rem); line-height:.94; letter-spacing:-.055em; text-transform:uppercase; }
+    .manifesto p { max-width:620px; color:#55524c; font-size:1.05rem; }
+    .values { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:32px; }
+    .value { padding-top:14px; border-top:3px solid var(--ink); font-weight:900; text-transform:uppercase; }
+    .launch-panel { position:relative; overflow:hidden; padding:clamp(34px,7vw,80px); border:1px solid rgba(242,194,48,.35); border-radius:30px; background:radial-gradient(circle at 90% 10%,rgba(242,194,48,.24),transparent 30%),linear-gradient(130deg,#161616,#0b0b0b); text-align:center; }
+    .launch-panel h2 { max-width:760px; margin:0 auto 18px; font-size:clamp(2.4rem,6vw,5.2rem); line-height:.96; letter-spacing:-.05em; text-transform:uppercase; }
+    .launch-panel p { max-width:650px; margin:0 auto 30px; color:#b8b4aa; }
+    footer { display:grid; grid-template-columns:1fr auto; align-items:end; gap:28px; width:min(1180px,calc(100% - 32px)); margin:0 auto; padding:36px 0 52px; border-top:1px solid var(--line); color:#99958b; font-size:.86rem; }
+    .footer-links { display:flex; flex-wrap:wrap; justify-content:end; gap:18px; }
+    .footer-links a { color:#ddd9cf; text-decoration:none; }
+    .footer-links a:hover,.footer-links a:focus-visible { color:var(--gold); }
+    :focus-visible { outline:3px solid #fff; outline-offset:4px; }
+    @media (max-width:860px) {
+      nav a:not(.button) { display:none; }
+      .hero { min-height:650px; }
+      .hero::before { background-position:66% center; }
+      .hero::after { background:linear-gradient(0deg,#0b0b0b 0%,rgba(0,0,0,.64) 70%,rgba(0,0,0,.25)); }
+      .hero-content { padding:140px 0 72px; }
+      .section { padding:72px 0; }
+      .section-head { display:block; }
+      .section-head p { margin-top:16px; }
+      .product-card { grid-column:span 6; }
+      .manifesto { grid-template-columns:1fr; }
+      .manifesto-art { min-height:470px; }
+    }
+    @media (max-width:560px) {
+      .site-header { width:min(100% - 24px,1180px); }
+      .brand { font-size:.88rem; }
+      nav .button { min-height:42px; padding:9px 14px; font-size:.82rem; }
+      .hero-content,.section,footer { width:min(100% - 24px,1180px); }
+      .hero { min-height:620px; }
+      h1 { font-size:clamp(3rem,18vw,5rem); }
+      .product-card { grid-column:1/-1; }
+      .product-card figure { aspect-ratio:1/1; }
+      .manifesto-art { min-height:420px; }
+      .values { grid-template-columns:1fr; }
+      footer { grid-template-columns:1fr; }
+      .footer-links { justify-content:start; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition-duration:.01ms!important; } }
+  </style>
 </head>
 <body>
-
- <header>
-   <img src="images/freegate_logo.png" alt="Freegate Logo" />
-   <h1>FREEGATE Culture</h1>
-   <p>Embrace The Beat. Live The Vibe.</p>
- </header>
-
- <div class="section" id="pullovers">
-   <h2>Rasta Hoodies / Pullovers</h2>
-   <div class="product-gallery">
-     <a href="https://freegatewear.etsy.com/listing/4311842552" target="_blank">
-       <img src="images/pullovers_yellow_red_green_black.png" alt="Pullover Mix">
-     </a>
-     <a href="https://freegatewear.etsy.com/listing/4311842552" target="_blank">
-       <img src="images/pullover_yellow_front.png" alt="Pullover Yellow">
-     </a>
-     <a href="https://freegatewear.etsy.com/listing/4311842552" target="_blank">
-       <img src="images/pullover_green_front.png" alt="Pullover Green">
-     </a>
-     <a href="https://freegatewear.etsy.com/listing/4311842552" target="_blank">
-       <img src="images/pullover_black_green_red_front.png" alt="Pullover Black">
-     </a>
-   </div>
-   <p><strong>Price:</strong> €54.99 — Customized: €70.99</p>
- </div>
-
- <div class="section" id="tshirts">
-   <h2>Freegate T-Shirts</h2>
-   <div class="product-gallery">
-     <a href="https://freegatewear.etsy.com/listing/4321879601" target="_blank">
-       <img src="images/tees.png" alt="Freegate T-Shirts">
-     </a>
-   </div>
-   <p><strong>Price:</strong> €29.99</p>
- </div>
-
- <div class="section" id="freedomTees">
-   <h2>“Freedom Over Fear” Tees</h2>
-   <div class="product-gallery">
-     <a href="https://freegatewear.etsy.com/listing/4330297347" target="_blank">
-       <img src="images/freedom_over_fear_trio.png" alt="Freedom Over Fear Trio Shirts">
-     </a>
-   </div>
-   <p><strong>Price:</strong> €32.99</p>
-   <p><strong>Slogan:</strong> “Freedom Over Fear”</p>
- </div>
-
- <div class="section" id="freegatevibesTees">
-   <h2>“Freegatevibes” Tees</h2>
-   <div class="product-gallery">
-     <a href="https://freegatewear.etsy.com/listing/4321879601" target="_blank">
-       <img src="images/freegatevibes.png" alt="Freegatevibes shirts">
-     </a>
-   </div>
-   <p><strong>Price:</strong> €32.99</p>
- </div>
-
- <div class="section" id="freedom-black">
-   <h2>“Freedom Over Fear” Tee – Black Edition</h2>
-   <div class="product-gallery">
-     <a href="https://freegatewear.etsy.com/listing/4330297347" target="_blank">
-       <img src="images/freedom_black_tee.png" alt="Freedom Over Fear Black Tee">
-     </a>
-   </div>
-   <p><strong>Price:</strong> €34.99</p>
-   <p><strong>Style:</strong> Bold black tee with “Freedom Over Fear” slogan</p>
- </div>
-
- <div class="section" id="headgears">
-   <h2>Rasta Headgear – Dread Caps</h2>
-   <div class="product-gallery">
-     <a href="https://freegatewear.etsy.com/listing/4322149609" target="_blank">
-       <img src="images/headgear.png" alt="Headgear 1">
-     </a>
-     <a href="https://freegatewear.etsy.com/listing/4322149609" target="_blank">
-       <img src="images/headgears.png" alt="Headgear Collection">
-     </a>
-   </div>
-   <p><strong>Price:</strong> €19.99</p>
- </div>
-
- <div class="section" id="sweatpants">
-   <h2>Rasta-Inspired Sweatpants</h2>
-   <div class="product-gallery">
-     <a href="https://freegatewear.etsy.com/listing/4322170179" target="_blank">
-       <img src="images/sweatpants1.png" alt="Sweatpants 1">
-     </a>
-     <a href="https://freegatewear.etsy.com/listing/4322170179" target="_blank">
-       <img src="images/sweatpants2.png" alt="Sweatpants 2">
-     </a>
-     <a href="https://freegatewear.etsy.com/listing/4322170179" target="_blank">
-       <img src="images/sweatpants3.png" alt="Sweatpants 3">
-     </a>
-   </div>
-   <p><strong>Price:</strong> €42.50 — Customized: €49.99</p>
- </div>
-
- <div class="etsy-button">
-   <a href="https://freegatewear.etsy.com" target="_blank">Visit Our Etsy Shop</a>
- </div>
-
- <div class="contact" id="contact">
-   <h3>Contact</h3>
-   <p> WhatsApp: <a href="https://wa.me/4915731268128" target="_blank">+49 157 31268128</a></p>
-   <p> Email: <strong>freegateconnect@gmail.com</strong></p>
- </div>
-
- <div class="footer">
-   <p>&copy; 2025 Freegate Culture. All rights reserved.</p>
- </div>
-
+  <a class="skip-link" href="#main">Skip to products</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="FREEGATEWEAR home"><span class="brand-mark" aria-hidden="true">FG</span><span>FREEGATEWEAR</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#collection">Collection</a>
+      <a href="#story">Our story</a>
+      <a class="button" href="#launch">Launch updates</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-content">
+        <p class="eyebrow">Independent culture wear</p>
+        <h1>Freedom in every thread.</h1>
+        <p class="hero-copy">Bold streetwear shaped by rhythm, roots and self-expression. FREEGATEWEAR is being rebuilt for direct worldwide ordering.</p>
+        <div class="hero-actions">
+          <a class="button" href="#collection">Explore the collection</a>
+          <a class="button secondary" href="#story">Meet the culture</a>
+        </div>
+      </div>
+    </section>
+    <div class="stripe" aria-hidden="true"></div>
+    <section class="section" id="collection">
+      <div class="section-head">
+        <h2>Designed to be seen.</h2>
+        <p>The first FREEGATEWEAR edit—statement pieces for people who choose expression over conformity.</p>
+      </div>
+      <div class="filters" aria-label="Filter collection">
+        <button class="filter active" type="button" data-filter="all" aria-pressed="true">All pieces</button>
+        <button class="filter" type="button" data-filter="hoodies" aria-pressed="false">Hoodies</button>
+        <button class="filter" type="button" data-filter="tees" aria-pressed="false">T-shirts</button>
+        <button class="filter" type="button" data-filter="bottoms" aria-pressed="false">Bottoms</button>
+        <button class="filter" type="button" data-filter="headwear" aria-pressed="false">Headwear</button>
+      </div>
+      <div class="product-grid" aria-live="polite">
+        <article class="product-card" data-category="hoodies"><figure><img src="images/pullovers_black_green_red.png" alt="Black, green and red FREEGATEWEAR hoodies" loading="lazy"></figure><div class="product-info"><p class="product-label">Hoodies</p><h3>Roots &amp; Culture Pullovers</h3><p>Statement hoodies in grounded colours with bold heritage-inspired graphics.</p><span class="status">Returning at launch</span></div></article>
+        <article class="product-card" data-category="hoodies"><figure><img src="images/pullovers_yellow_red_green_black.png" alt="FREEGATEWEAR hoodie collection in yellow, red, green and black" loading="lazy"></figure><div class="product-info"><p class="product-label">Hoodies</p><h3>Live the Vibe Collection</h3><p>Warm colour, strong type and a fearless front graphic made for everyday wear.</p><span class="status">Returning at launch</span></div></article>
+        <article class="product-card" data-category="tees"><figure><img src="images/tees.png" alt="FREEGATEWEAR T-shirts in green, yellow, black and grey" loading="lazy"></figure><div class="product-info"><p class="product-label">T-shirts</p><h3>Freegate Essentials</h3><p>Clean graphic tees that carry the lion, the crown and the spirit of the brand.</p><span class="status">Returning at launch</span></div></article>
+        <article class="product-card" data-category="tees"><figure><img src="images/freedom_over_fear_trio.png" alt="Freedom Over Fear T-shirts in green, burgundy and black" loading="lazy"></figure><div class="product-info"><p class="product-label">T-shirts</p><h3>Freedom Over Fear</h3><p>A direct message for anyone who refuses to let fear decide the next move.</p><span class="status">Returning at launch</span></div></article>
+        <article class="product-card" data-category="bottoms"><figure><img src="images/sweatpants2.png" alt="FREEGATEWEAR sweatpants in yellow, green, black and grey" loading="lazy"></figure><div class="product-info"><p class="product-label">Bottoms</p><h3>Freegate Track Pants</h3><p>Relaxed essentials with unmistakable colour stripes and clean logo placement.</p><span class="status">Returning at launch</span></div></article>
+        <article class="product-card" data-category="headwear"><figure><img src="images/headgears.png" alt="FREEGATEWEAR dread caps in green, black and red" loading="lazy"></figure><div class="product-info"><p class="product-label">Headwear</p><h3>Lion Dread Caps</h3><p>Bold knit headwear built around warmth, comfort and signature Freegate identity.</p><span class="status">Returning at launch</span></div></article>
+      </div>
+    </section>
+    <section class="manifesto-wrap" id="story">
+      <div class="section manifesto">
+        <div class="manifesto-art" role="img" aria-label="Black Freedom Over Fear T-shirt"></div>
+        <div><p class="eyebrow">The Freegate spirit</p><h2>More than clothing.</h2><p>FREEGATEWEAR stands for the freedom to move, speak and show up as yourself. The collection blends expressive streetwear with colours and symbols that carry culture, strength and togetherness.</p><p>This next chapter is being built as a direct store: clearer sizing, colour choices, secure checkout and reliable worldwide fulfillment.</p><div class="values" aria-label="Brand values"><div class="value">Freedom</div><div class="value">Culture</div><div class="value">Unity</div></div></div>
+      </div>
+    </section>
+    <section class="section" id="launch">
+      <div class="launch-panel"><p class="eyebrow">The new store is in progress</p><h2>New drops. Direct ordering. Worldwide reach.</h2><p>We are preparing the updated collection and choosing the right production partner before opening checkout. Contact FREEGATEWEAR for launch news or product questions.</p><a class="button" href="mailto:freegateconnect@gmail.com?subject=FREEGATEWEAR%20launch%20updates">Get launch updates</a></div>
+    </section>
+  </main>
+  <footer>
+    <div><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">FG</span><span>FREEGATEWEAR</span></a><p>© <span id="year">2026</span> Freegate Culture. All rights reserved.</p></div>
+    <div class="footer-links"><a href="mailto:freegateconnect@gmail.com">Email</a><a href="https://wa.me/4915731268128" target="_blank" rel="noopener">WhatsApp</a><a href="#collection">Collection</a></div>
+  </footer>
+  <script>
+    const filters=document.querySelectorAll(".filter");
+    const products=document.querySelectorAll(".product-card");
+    filters.forEach((filter)=>{filter.addEventListener("click",()=>{const selected=filter.dataset.filter;filters.forEach((item)=>{const active=item===filter;item.classList.toggle("active",active);item.setAttribute("aria-pressed",String(active));});products.forEach((product)=>{product.hidden=selected!=="all"&&product.dataset.category!==selected;});});});
+    document.getElementById("year").textContent=new Date().getFullYear();
+  </script>
 </body>
 </html>

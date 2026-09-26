@@ -70,6 +70,11 @@
     .launch-panel { position:relative; overflow:hidden; padding:clamp(34px,7vw,80px); border:1px solid rgba(242,194,48,.35); border-radius:30px; background:radial-gradient(circle at 90% 10%,rgba(242,194,48,.24),transparent 30%),linear-gradient(130deg,#161616,#0b0b0b); text-align:center; }
     .launch-panel h2 { max-width:760px; margin:0 auto 18px; font-size:clamp(2.4rem,6vw,5.2rem); line-height:.96; letter-spacing:-.05em; text-transform:uppercase; }
     .launch-panel p { max-width:650px; margin:0 auto 30px; color:#b8b4aa; }
+    .video-container { overflow:hidden; padding:clamp(24px,5vw,56px); border:1px solid rgba(242,194,48,.35); border-radius:30px; background:radial-gradient(circle at 90% 10%,rgba(242,194,48,.16),transparent 32%),linear-gradient(130deg,#161616,#0b0b0b); }
+    .video-container h2 { margin-bottom:12px; font-size:clamp(2rem,5vw,3.8rem); line-height:.98; letter-spacing:-.045em; text-transform:uppercase; }
+    .video-container > p { margin-bottom:26px; color:#b8b4aa; }
+    .video-container video { display:block; width:100%; max-height: min(70vh,720px); border-radius:var(--radius); background:#000; }
+    .ad-links { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:24px; }
     footer { display:grid; grid-template-columns:1fr auto; align-items:end; gap:28px; width:min(1180px,calc(100% - 32px)); margin:0 auto; padding:36px 0 52px; border-top:1px solid var(--line); color:#99958b; font-size:.86rem; }
     .footer-links { display:flex; flex-wrap:wrap; justify-content:end; gap:18px; }
     .footer-links a { color:#ddd9cf; text-decoration:none; }
@@ -158,6 +163,20 @@
       <div class="section manifesto">
         <div class="manifesto-art" role="img" aria-label="Black Freedom Over Fear T-shirt"></div>
         <div><p class="eyebrow">The Freegate spirit</p><h2>More than clothing.</h2><p>FREEGATEWEAR stands for the freedom to move, speak and show up as yourself. The collection blends expressive streetwear with colours and symbols that carry culture, strength and togetherness.</p><p>This next chapter is being built as a direct store: clearer sizing, colour choices, secure checkout and reliable worldwide fulfillment.</p><div class="values" aria-label="Brand values"><div class="value">Freedom</div><div class="value">Culture</div><div class="value">Unity</div></div></div>
+      </div>
+    </section>
+    <section class="section video-ad-section" aria-labelledby="video-ad-title">
+      <div class="video-container">
+        <h2 id="video-ad-title">Freedom in Every Thread</h2>
+        <p>Check out our latest streetwear edit in action.</p>
+        <video controls autoplay muted loop playsinline preload="metadata" aria-label="FREEGATEWEAR streetwear advertisement">
+          <source src="videos/freegate-ad.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="ad-links">
+          <a class="button secondary" href="https://blaqqburn.github.io/Freegate/">Visit Main Site</a>
+          <a class="button" href="https://freegate.storenvy.com/" target="_blank" rel="noopener">Shop the Store</a>
+        </div>
       </div>
     </section>
     <section class="section" id="launch">

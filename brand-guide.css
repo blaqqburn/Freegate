@@ -31,3 +31,12 @@
 @keyframes fgw-turn{0%,100%{scale:1 1}50%{scale:-1 1}}
 @media(max-width:560px){.fgw-guide[data-collapsed=true]{width:105px}.fgw-guide[data-collapsed=true] .fgw-guide-character{flex-basis:90px;width:90px;height:135px}.fgw-guide[data-collapsed=true] .fgw-guide-sprite{width:90px;height:135px}}
 @media(prefers-reduced-motion:reduce){.fgw-guide-sprite,.fgw-guide[data-collapsed=true] .fgw-guide-character{animation:none!important;transform:none!important;scale:1 1!important}}
+
+/* Travel visibly and keep walking after pointer or keyboard interaction. */
+.fgw-guide{--fgw-walk-distance:clamp(100px,20vw,240px)}
+.fgw-guide[data-collapsed=true] .fgw-guide-character{animation:fgw-patrol-wide 12s linear infinite;animation-play-state:running}
+.fgw-guide[data-collapsed=true]:hover .fgw-guide-character,.fgw-guide[data-collapsed=true]:focus-within .fgw-guide-character{animation-play-state:running}
+.fgw-guide[data-collapsed=true] .fgw-guide-sprite{animation:fgw-walkframes 1s steps(1,end) infinite,fgw-turn 12s steps(1,end) infinite}
+@keyframes fgw-patrol-wide{0%,100%{transform:translateX(calc(-1 * var(--fgw-walk-distance)))}50%{transform:translateX(0)}}
+@media(max-width:560px){.fgw-guide{--fgw-walk-distance:clamp(70px,25vw,140px)}}
+@media(prefers-reduced-motion:reduce){.fgw-guide[data-collapsed=true] .fgw-guide-character,.fgw-guide[data-collapsed=true] .fgw-guide-sprite{animation:none!important;transform:none!important;scale:1 1!important}}

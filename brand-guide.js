@@ -1,37 +1,38 @@
 (() => {
-  'use strict';
-  if (document.getElementById('fgw-guide')) return;
-  const copy = {
-    en: {label:'Your FREEGATEWEAR guide',intro:'Welcome to FREEGATEWEAR. Streetwear rooted in freedom, culture and self-expression. Explore graphic hoodies, tees and embroidered headwear. Find your next fit in our official shop.',shop:'Shop now ↗',listen:'Hear the intro',stop:'Stop audio',close:'Close introduction',open:'Open FREEGATEWEAR introduction',region:'FREEGATEWEAR brand guide',unavailable:'Voice is unavailable on this device. You can still read the introduction.',error:'Audio could not start. You can read the introduction here.',voice:'Uses a voice on your device. No microphone needed.'},
-    de: {label:'Dein FREEGATEWEAR Guide',intro:'Willkommen bei FREEGATEWEAR. Streetwear für Freiheit, Kultur und deinen eigenen Ausdruck. Entdecke Hoodies mit markanten Motiven, T-Shirts und bestickte Caps und Mützen. Finde deinen nächsten Look in unserem offiziellen Shop.',shop:'Zum Shop ↗',listen:'Intro anhören',stop:'Audio stoppen',close:'Einführung schließen',open:'FREEGATEWEAR Einführung öffnen',region:'FREEGATEWEAR Marken-Guide',unavailable:'Auf diesem Gerät ist keine Stimme verfügbar. Du kannst die Einführung weiterhin lesen.',error:'Audio konnte nicht starten. Du kannst die Einführung hier lesen.',voice:'Nutzt eine Stimme auf deinem Gerät. Kein Mikrofon nötig.'}
-  };
-  const key='freegatewear-guide-dismissed';
-  const root=document.createElement('aside');root.id='fgw-guide';root.className='fgw-guide';root.hidden=true;
-  root.innerHTML='<section class="fgw-guide-panel" id="fgw-guide-panel"><button class="fgw-guide-close" type="button">×</button><p class="fgw-guide-label"></p><p class="fgw-guide-copy"></p><div class="fgw-guide-actions"><a class="fgw-guide-shop" href="https://freegate.storenvy.com/" target="_blank" rel="noopener noreferrer"></a><button class="fgw-guide-listen" type="button"></button></div><small class="fgw-guide-status" role="status"></small></section><button class="fgw-guide-character" type="button" aria-controls="fgw-guide-panel"><img src="images/freegatewear-guide.webp" alt="" width="94" height="168" decoding="async"></button>';
-  document.body.append(root);
-  const panel=root.querySelector('.fgw-guide-panel'),character=root.querySelector('.fgw-guide-character'),listen=root.querySelector('.fgw-guide-listen'),status=root.querySelector('.fgw-guide-status');
-  const synth=window.speechSynthesis;let speaking=false,utterance=null,collapsed=false;
-  try{collapsed=sessionStorage.getItem(key)==='1';}catch(_){}
-  const language=()=>document.documentElement.lang==='de'?'de':'en';
-  const text=()=>copy[language()];
-  const localVoice=()=>synth&&synth.getVoices().find(v=>v.localService&&v.lang.toLowerCase().split('-')[0]===language());
-  function stop(){if(speaking&&synth)synth.cancel();speaking=false;utterance=null;root.dataset.speaking='false';listen.textContent=text().listen;listen.setAttribute('aria-pressed','false');}
-  function refreshVoice(){listen.disabled=!localVoice();status.textContent=listen.disabled?text().unavailable:text().voice;}
-  function setCollapsed(value,remember){collapsed=value;panel.hidden=value;root.dataset.collapsed=String(value);character.setAttribute('aria-expanded',String(!value));character.setAttribute('aria-label',value?text().open:text().close);if(value)stop();if(remember)try{if(value)sessionStorage.setItem(key,'1');else sessionStorage.removeItem(key);}catch(_){} }
-  function render(){stop();root.setAttribute('aria-label',text().region);root.querySelector('.fgw-guide-label').textContent=text().label;root.querySelector('.fgw-guide-copy').textContent=text().intro;root.querySelector('.fgw-guide-shop').textContent=text().shop;root.querySelector('.fgw-guide-close').setAttribute('aria-label',text().close);setCollapsed(collapsed,false);refreshVoice();}
-  character.addEventListener('click',()=>setCollapsed(!collapsed,true));
-  root.querySelector('.fgw-guide-close').addEventListener('click',()=>{setCollapsed(true,true);character.focus();});
-  root.addEventListener('keydown',e=>{if(e.key==='Escape'&&!collapsed){setCollapsed(true,true);character.focus();}});
-  listen.addEventListener('click',()=>{
-    if(speaking){stop();return;}const voice=localVoice();if(!voice){refreshVoice();return;}
-    utterance=new SpeechSynthesisUtterance(text().intro);utterance.voice=voice;utterance.lang=voice.lang;utterance.rate=.95;
-    utterance.onend=()=>{stop();refreshVoice();};utterance.onerror=()=>{stop();status.textContent=text().error;};
-    speaking=true;root.dataset.speaking='true';listen.textContent=text().stop;listen.setAttribute('aria-pressed','true');
-    try{synth.speak(utterance);}catch(_){stop();status.textContent=text().error;}
-  });
-  if(synth)synth.addEventListener('voiceschanged',refreshVoice);
-  new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});window.addEventListener('pagehide',stop);
-  root.querySelector('img').addEventListener('error',()=>{root.hidden=true;});
-  render();setTimeout(()=>{root.hidden=false;root.dataset.ready='true';},700);
+'use strict';
+if(document.getElementById('fgw-guide'))return;
+const C={
+en:{label:'FREEGATEWEAR · shop helper',hello:'Hey! Welcome to FREEGATEWEAR. I’m your guide. What can I help you with?',shop:'Explore the shop ↗',on:'Turn voice on',off:'Turn voice off',close:'Close shop help',open:'Ask the FREEGATEWEAR character for help',hint:'Choose a question — quick shop help, not a live chat.',noVoice:'Voice is unavailable here. You can still read my answers.',voice:'Turn voice on to hear my answers.',error:'Audio could not start. My answer is shown here.',topics:['Help me choose','Which size?','Delivery & returns','Materials & quality','Contact the brand'],answers:[
+['Let’s find your look. Start with a statement lion hoodie, a graphic T-shirt, or an embroidered cap. The shop shows the designs, colours and sizes currently available.','See the collection ↗','https://freegate.storenvy.com/'],
+['Check the size guide on the exact product page. Measure a garment you already like and compare it with that guide. Fit and sizes vary by product. If you’re unsure, email us with the product and your measurements.','Get sizing help ↗','mailto:freegateconnect@gmail.com'],
+['Our clothing is made to order through Printful. Production and delivery times depend on the product and destination. Prices are in US dollars; checkout shows shipping, handling and applicable taxes. Read delivery and returns information before ordering.','Delivery information ↗','https://freegate.storenvy.com/faq'],
+['Materials depend on the piece. Check the product listing for fabric composition, fit and care. Campaign artwork is an illustration; use product photos and listing details when choosing. Ask us if a detail is missing.','Check product details ↗','https://freegate.storenvy.com/'],
+['Need a person’s help? Email FREEGATEWEAR at freegateconnect@gmail.com. Tell us which product you’re asking about so we can help with sizing or product details. Please keep payment information out of your message.','Email FREEGATEWEAR ↗','mailto:freegateconnect@gmail.com']]},
+de:{label:'FREEGATEWEAR · Shop-Hilfe',hello:'Hey! Willkommen bei FREEGATEWEAR. Ich bin dein Guide. Wobei kann ich dir helfen?',shop:'Shop entdecken ↗',on:'Stimme einschalten',off:'Stimme ausschalten',close:'Shop-Hilfe schließen',open:'Den FREEGATEWEAR Charakter um Hilfe fragen',hint:'Wähle eine Frage – schnelle Shop-Hilfe, kein Live-Chat.',noVoice:'Hier ist keine Stimme verfügbar. Du kannst meine Antworten lesen.',voice:'Schalte die Stimme ein, um meine Antworten zu hören.',error:'Audio konnte nicht starten. Meine Antwort steht hier.',topics:['Hilf mir wählen','Welche Größe?','Versand & Rückgabe','Material & Qualität','Kontakt zur Marke'],answers:[
+['Finden wir deinen Look. Starte mit einem Löwen-Hoodie, einem T-Shirt mit Motiv oder einer bestickten Cap. Im Shop siehst du die aktuell erhältlichen Designs, Farben und Größen.','Kollektion ansehen ↗','https://freegate.storenvy.com/'],
+['Prüfe die Größentabelle auf der jeweiligen Produktseite. Miss ein Kleidungsstück, das dir gut passt, und vergleiche es mit der Tabelle. Passform und Größen variieren. Bei Unsicherheit schreib uns das Produkt und deine Maße per E-Mail.','Hilfe bei der Größe ↗','mailto:freegateconnect@gmail.com'],
+['Unsere Kleidung wird auf Bestellung durch Printful gefertigt. Produktions- und Lieferzeiten hängen von Produkt und Zielort ab. Preise sind in US-Dollar; Versand, Bearbeitung und gegebenenfalls Steuern siehst du im Checkout. Lies die Versand- und Rückgabeinformationen vor der Bestellung.','Versandinformationen ↗','https://freegate.storenvy.com/faq'],
+['Das Material hängt vom Kleidungsstück ab. Stoffzusammensetzung, Passform und Pflege findest du auf der jeweiligen Produktseite. Kampagnenmotive sind Illustrationen; wähle anhand der Produktfotos und Angaben im Shop. Frag uns, wenn eine Angabe fehlt.','Produktdetails prüfen ↗','https://freegate.storenvy.com/'],
+['Brauchst du persönliche Hilfe? Schreib an freegateconnect@gmail.com und nenne das Produkt. So können wir dir bei Größen und Produktdetails helfen. Bitte sende keine Zahlungsdaten mit.','FREEGATEWEAR mailen ↗','mailto:freegateconnect@gmail.com']]}}
+const key='freegatewear-guide-dismissed',r=document.createElement('aside');r.id='fgw-guide';r.className='fgw-guide';r.hidden=true;
+r.innerHTML='<section class="fgw-guide-panel" id="fgw-guide-panel"><button class="fgw-guide-close" type="button">×</button><p class="fgw-guide-label"></p><p class="fgw-guide-copy" aria-live="polite"></p><div class="fgw-guide-topics">'+[0,1,2,3,4].map(n=>'<button type="button" class="fgw-guide-topic" data-topic="'+n+'"></button>').join('')+'</div><div class="fgw-guide-actions"><a class="fgw-guide-shop" target="_blank" rel="noopener noreferrer"></a><button class="fgw-guide-listen" type="button"></button></div><small class="fgw-guide-status" role="status"></small><small class="fgw-guide-hint"></small></section><button class="fgw-guide-character" type="button" aria-controls="fgw-guide-panel"><img src="images/freegatewear-guide.webp" alt="" width="154" height="270" decoding="async"></button>';
+document.body.append(r);
+const q=s=>r.querySelector(s),panel=q('.fgw-guide-panel'),character=q('.fgw-guide-character'),listen=q('.fgw-guide-listen'),status=q('.fgw-guide-status'),shop=q('.fgw-guide-shop'),topics=r.querySelectorAll('.fgw-guide-topic'),synth=window.speechSynthesis;
+let topic=null,voiceOn=false,speaking=false,collapsed=false,u=null,failed=false,generation=0;
+try{collapsed=sessionStorage.getItem(key)==='1'}catch(_){}
+const lang=()=>document.documentElement.lang==='de'?'de':'en',c=()=>C[lang()],voice=()=>synth&&synth.getVoices().find(v=>v.localService&&v.lang.toLowerCase().split('-')[0]===lang());
+function stop(){generation++;if(speaking&&synth)synth.cancel();speaking=false;u=null;r.dataset.speaking='false'}
+function audioState(){listen.disabled=!voice();if(listen.disabled)voiceOn=false;listen.textContent=voiceOn?c().off:c().on;listen.setAttribute('aria-pressed',String(voiceOn));status.textContent=listen.disabled?c().noVoice:c().voice}
+function answer(){return topic===null?c().hello:c().answers[topic][0]}
+function speak(){stop();if(!voiceOn||!voice())return;const run=generation;u=new SpeechSynthesisUtterance(answer());u.voice=voice();u.lang=u.voice.lang;u.rate=.95;u.onend=()=>{if(run!==generation)return;speaking=false;r.dataset.speaking='false'};u.onerror=()=>{if(run!==generation)return;speaking=false;voiceOn=false;r.dataset.speaking='false';audioState();status.textContent=c().error};speaking=true;r.dataset.speaking='true';try{synth.speak(u)}catch(_){stop();voiceOn=false;audioState();status.textContent=c().error}}
+function collapse(value,remember){collapsed=value;panel.hidden=value;r.dataset.collapsed=String(value);character.setAttribute('aria-expanded',String(!value));character.setAttribute('aria-label',value?c().open:c().close);if(value){stop();voiceOn=false;audioState()}if(remember)try{if(value)sessionStorage.setItem(key,'1');else sessionStorage.removeItem(key)}catch(_){}}
+function render(){stop();r.setAttribute('aria-label',c().label);q('.fgw-guide-label').textContent=c().label;q('.fgw-guide-copy').textContent=answer();shop.textContent=topic===null?c().shop:c().answers[topic][1];shop.href=topic===null?'https://freegate.storenvy.com/':c().answers[topic][2];topics.forEach(b=>{b.textContent=c().topics[Number(b.dataset.topic)];b.setAttribute('aria-pressed',String(topic===Number(b.dataset.topic)))});q('.fgw-guide-hint').textContent=c().hint;q('.fgw-guide-close').setAttribute('aria-label',c().close);collapse(collapsed,false);audioState()}
+topics.forEach(b=>b.addEventListener('click',()=>{topic=Number(b.dataset.topic);render();if(voiceOn)speak()}));
+character.addEventListener('click',()=>collapse(!collapsed,true));q('.fgw-guide-close').addEventListener('click',()=>{collapse(true,true);character.focus()});
+r.addEventListener('keydown',e=>{if(e.key==='Escape'&&!collapsed){collapse(true,true);character.focus()}});
+listen.addEventListener('click',()=>{voiceOn=!voiceOn;stop();audioState();if(voiceOn)speak()});
+if(synth)synth.addEventListener('voiceschanged',audioState);
+new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();voiceOn=false;audioState()}});window.addEventListener('pagehide',stop);
+q('img').addEventListener('error',()=>{failed=true;r.hidden=true});render();setTimeout(()=>{r.hidden=failed;r.dataset.ready='true'},700);
 })();

@@ -17,3 +17,17 @@
 @media(max-width:560px){.fgw-guide{width:min(370px,calc(100vw - 24px))}.fgw-guide-character{flex-basis:104px;width:104px;height:182px}.fgw-guide-panel{margin-bottom:56px;max-height:min(480px,calc(100dvh - 86px));padding:16px 12px 12px}.fgw-guide-copy{font-size:12px}.fgw-guide-label{font-size:9px}.fgw-guide-topic{font-size:11px;padding:6px 8px;min-height:34px}.fgw-guide[data-collapsed=true]{width:72px}.fgw-guide[data-collapsed=true] .fgw-guide-character{flex-basis:72px;width:72px;height:126px}.fgw-guide-actions{gap:6px}.fgw-guide-shop,.fgw-guide-listen{font-size:11px;min-height:40px;padding:7px 10px}}
 @media(max-height:460px){.fgw-guide-panel{max-height:calc(100dvh - 28px);margin-bottom:0}.fgw-guide-character{height:140px}}
 @media(prefers-reduced-motion:reduce){.fgw-guide-character{animation:none!important}}
+
+/* Idle character walks at the bottom edge; help opens only on click. */
+.fgw-guide-sprite{display:none}
+.fgw-guide[data-collapsed=true]{width:144px}
+.fgw-guide[data-collapsed=true] .fgw-guide-character{flex:0 0 120px;width:120px;height:180px;animation:fgw-patrol 14s linear infinite}
+.fgw-guide[data-collapsed=true] .fgw-guide-character img{display:none}
+.fgw-guide[data-collapsed=true] .fgw-guide-sprite{display:block;width:120px;height:180px;background:url("images/freegatewear-walk.webp") 0 0/200% 200% no-repeat;animation:fgw-walkframes 1s steps(1,end) infinite,fgw-turn 14s steps(1,end) infinite}
+.fgw-guide-character:after{content:'?'}
+.fgw-guide[data-collapsed=true]:hover .fgw-guide-character,.fgw-guide[data-collapsed=true]:focus-within .fgw-guide-character{animation-play-state:paused}
+@keyframes fgw-patrol{0%,100%{transform:translateX(-60px)}50%{transform:translateX(0)}}
+@keyframes fgw-walkframes{0%,100%{background-position:0 0}25%{background-position:100% 0}50%{background-position:0 100%}75%{background-position:100% 100%}}
+@keyframes fgw-turn{0%,100%{scale:1 1}50%{scale:-1 1}}
+@media(max-width:560px){.fgw-guide[data-collapsed=true]{width:105px}.fgw-guide[data-collapsed=true] .fgw-guide-character{flex-basis:90px;width:90px;height:135px}.fgw-guide[data-collapsed=true] .fgw-guide-sprite{width:90px;height:135px}}
+@media(prefers-reduced-motion:reduce){.fgw-guide-sprite,.fgw-guide[data-collapsed=true] .fgw-guide-character{animation:none!important;transform:none!important;scale:1 1!important}}
